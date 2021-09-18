@@ -22,7 +22,7 @@ class Api::V1::HousesController < Api::V1::ApiController
   end
 
   def update
-    if @hpuse.update(house_params)
+    if @house.update(house_params)
       render json: @house
     else
       render json: @house.errors, status: :unprocessable_entity
