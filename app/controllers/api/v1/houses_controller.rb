@@ -34,6 +34,7 @@ class Api::V1::HousesController < Api::V1::ApiController
   end
 
   private
+
   def set_house
     @house = House.find(params[:id])
   end
