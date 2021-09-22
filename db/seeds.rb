@@ -9,6 +9,7 @@
 10.times do 
   House.create(
     house_name: Faker::Restaurant.name,
+    # user_id: 1,
     city: Faker::Address.city,
     address: Faker::Address.full_address,
     description_short: Faker::Restaurant.description,

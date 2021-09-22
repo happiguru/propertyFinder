@@ -1,6 +1,7 @@
 class CreateHouses < ActiveRecord::Migration[6.1]
   def change
     create_table :houses do |t|
+      t.integer :user_id
       t.string :house_name
       t.string :city
       t.string :address
@@ -16,5 +17,6 @@ class CreateHouses < ActiveRecord::Migration[6.1]
 
       t.timestamps
     end
+    add_index :houses, :user_id
   end
 end
