@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-    has_secure_password
+    VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
+    validates_uniqueness_of :username
+    validates :username, :email, presence: true
+    validates :email, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
-    validates :username, presence: true
-    validates :username, uniqueness: true
-    validates :username, length: { maximum: 4}
-
-    has_many :houses
-    has_many :favourites, dependent: :destroy
+    has_many :houses, through: :favorites
+    has_many :favourites
 end
