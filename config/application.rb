@@ -37,6 +37,12 @@ module PropertyFinder
     # Skip views, helpers and assets when generating a new resource.
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
-    config.api_only = false
+    config.api_only = true
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, method: %i[get post options]
+      end
+    end
   end
 end

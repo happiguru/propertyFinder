@@ -44,8 +44,13 @@ ActiveRecord::Schema.define(version: 2021_09_24_172227) do
   end
 
   create_table "favourites", force: :cascade do |t|
-    t.integer "house_id"
-    t.integer "user_id"
+    t.bigint "user_id", null: false
+    t.bigint "house_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["house_id"], name: "index_favourites_on_house_id"
+    t.index ["user_id", "house_id"], name: "index_favourites_on_user_id_and_house_id", unique: true
+    t.index ["user_id"], name: "index_favourites_on_user_id"
   end
 
   create_table "houses", force: :cascade do |t|
