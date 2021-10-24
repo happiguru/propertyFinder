@@ -1,5 +1,4 @@
-module Api::V1
-  class HousesController < SecuredController
+class Api::V1::HousesController < ApplicationController
     def index
       @houses = House.all
   
@@ -21,5 +20,4 @@ module Api::V1
     def house_params
       params.permit(:house_name, :city, :address, :description_short, :price, :image)
     end
-  end
 end

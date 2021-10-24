@@ -9,7 +9,6 @@
 10.times do 
   House.create(
     house_name: Faker::Restaurant.name,
-    # user_id: 1,
     city: Faker::Address.city,
     address: Faker::Address.full_address,
     description_short: Faker::Restaurant.description,
@@ -17,3 +16,5 @@
     price: Faker::Number.decimal(l_digits: 2)
   )
 end
+
+user = User.create(username: "stan", email: "stan@y.com", password_digest: "Hello")

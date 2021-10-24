@@ -37,11 +37,22 @@ module PropertyFinder
     # Skip views, helpers and assets when generating a new resource.
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
-    config.api_only = true
+    config.api_only = false
+
+    # Development
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', headers: :any, method: %i[get post options]
+        origins 'http://localhost:3001'
+        resource '*', headers: :any, method: %i[get post patch put delete options]
+      end
+    end
+
+    # Production
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins 'http://localhost:3001'
+        resource '*', headers: :any, method: %i[get post patch put delete options]
       end
     end
   end

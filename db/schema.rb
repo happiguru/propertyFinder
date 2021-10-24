@@ -54,7 +54,6 @@ ActiveRecord::Schema.define(version: 2021_09_24_172227) do
   end
 
   create_table "houses", force: :cascade do |t|
-    t.integer "user_id"
     t.string "house_name"
     t.string "city"
     t.string "address"
@@ -63,7 +62,6 @@ ActiveRecord::Schema.define(version: 2021_09_24_172227) do
     t.string "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_houses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
